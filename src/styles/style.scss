@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  --blue: #2e9ded;
+  --yellow: #ffe96e;
+  --border: solid 5px #000;
+  --pixel: 4px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 200vh;
+
+  font-family: 'VT323';
+
+  background-size: 50px 50px;
+  background-image:
+    linear-gradient(to top, #00000011 1px, transparent 1px),
+    linear-gradient(to right, #00000011 1px, transparent 1px);
+}
+
+img {
+  user-select: none;
+}
+
+.sprite {
+  width: calc(var(--w) * var(--pixel));
+}
+
+html {
+  &::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #000;
+    border: solid 2px #000;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #fff;
+    border: solid 2px #000;
+  }
+
+  &::-webkit-scrollbar-button:single-button {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px;
+    border: solid 2px #000;
+  }
+
+  &::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' shape-rendering='crispEdges'%3E%3Cpath d='M5 2 L9 7 H1 Z'/%3E%3C/svg%3E");
+  }
+
+  &::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' shape-rendering='crispEdges'%3E%3Cpath d='M5 8 L9 3 H1 Z'/%3E%3C/svg%3E");
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-color: #fff #000;
+  }
+}
+
+header {
+  width: 100%;
+  height: 90vh;
+  padding: 2em 10em;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--blue);
+
+  .header-top {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 30px;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+
+    ul {
+      display: flex;
+      gap: 1em;
+      list-style: none;
+    }
+  }
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+.sticky-note {
+  position: relative;
+
+  width: 400px;
+  height: 400px;
+  padding: 40px;
+
+  background-color: var(--yellow);
+  border: var(--border);
+
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - 50px) 0%,
+    100% 50px,
+    100% 100%,
+    0% 100%
+  );
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2.5px;
+    right: -2.5px;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: var(--yellow);
+    border: var(--border);
+
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 50px) 0%,
+      100% 50px,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -14px;
+    top: 19px;
+
+    width: 70px;
+    height: 5px;
+
+    transform: rotate(45deg);
+
+    background-color: #000;
+  }
+
+  .text {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      font-size: 35px;
+
+      font-weight: normal;
+    }
+
+    .content {
+      height: 80%;
+      background-size: 35px 35px;
+      background-image: linear-gradient(to top, #000 2px, transparent 2px);
+
+      font-size: 30px;
+
+      p {
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+        height: 35px;
+        display: flex;
+        box-sizing: border-box;
+        padding-bottom: -10px;
+        align-items: flex-end;
+      }
+    }
+  }
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 3em 18em;
+
+  .me-image {
+    position: relative;
+
+    .me-cloud {
+      width: 250px;
+      position: absolute;
+
+      &:nth-child(2) {
+        left: -51px;
+        bottom: -50px;
+      }
+
+      &:nth-child(3) {
+        right: -51px;
+        bottom: -50px;
+      }
+    }
+  }
+}
+
+.clouds {
+  width: 100%;
+  height: 400px;
+  position: absolute;
+  left: 0;
+  bottom: -70px;
+  overflow: hidden;
+  pointer-events: none;
+
+  .cloud {
+    position: absolute;
+    left: 100%;
+    bottom: 100px;
+  }
+}
