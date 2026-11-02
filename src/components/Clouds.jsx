@@ -19,35 +19,48 @@ export default function Clouds() {
     () => {
       const clouds = gsap.utils.toArray('.cloud');
       const vw = window.innerWidth;
+      const duration = 25;
+      const gap = duration / clouds.length;
 
-      gsap.timeline({ repeat: -1 }).to(clouds, {
-        duration: 20,
-        ease: 'none',
-        stagger: 5,
-        transformOrigin: 'center center',
-        motionPath: {
-          path: [
-            { x: 0, y: 0 },
-            { x: -vw * 0.25, y: getRandom(-25, 25) },
-            { x: -vw * 0.5, y: getRandom(35, 60) },
-            { x: -vw * 0.75, y: getRandom(-45, -20) },
-            { x: -vw * 1.0, y: getRandom(20, 45) },
-            { x: -vw * 1.3, y: getRandom(-15, 15) },
-          ],
-          curviness: 1,
-        },
-        onStart: () =>
-          clouds.forEach((c) => gsap.set(c, { bottom: getRandom(70, 200) })),
+      clouds.forEach((cloud, i) => {
+        const randomHeight = () =>
+          gsap.set(cloud, { bottom: getRandom(110, 170) });
+        randomHeight();
+
+        gsap.to(cloud, {
+          duration,
+          ease: 'none',
+          repeat: -1,
+          delay: -i * gap,
+          transformOrigin: 'center center',
+          motionPath: {
+            path: [
+              { x: 0, y: 0 },
+              { x: -vw * 0.25, y: getRandom(-25, 25) },
+              { x: -vw * 0.5, y: getRandom(35, 60) },
+              { x: -vw * 0.75, y: getRandom(-45, -20) },
+              { x: -vw * 1.0, y: getRandom(20, 45) },
+              { x: -vw * 1.3, y: getRandom(-15, 15) },
+            ],
+            curviness: 1,
+          },
+          onRepeat: randomHeight,
+        });
       });
     },
     { scope: root },
   );
 
+  let ps = 6;
+
   return (
     <div className="clouds" ref={root}>
-      <Sprite src={BigCloud} className="cloud" />
-      <Sprite src={MediumCloud} className="cloud" />
-      <Sprite src={SmallCloud} className="cloud" />
+      <Sprite src={BigCloud} className="cloud" pixelSize={ps} />
+      <Sprite src={MediumCloud} className="cloud" pixelSize={ps} />
+      <Sprite src={SmallCloud} className="cloud" pixelSize={ps} />
+      <Sprite src={BigCloud} className="cloud" pixelSize={ps} />
+      <Sprite src={MediumCloud} className="cloud" pixelSize={ps} />
+      <Sprite src={SmallCloud} className="cloud" pixelSize={ps} />
     </div>
   );
 }

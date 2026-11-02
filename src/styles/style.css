@@ -2,14 +2,16 @@
 :root {
   --blue: #2e9ded;
   --yellow: #ffe96e;
+  --green: #99e550;
   --border: solid 5px #000;
-  --pixel: 4px;
+  --pixel: 9px;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: solid 2px rgba(255, 0, 0, 0.3333333333);
 }
 
 body {
@@ -41,9 +43,9 @@ html::-webkit-scrollbar-thumb {
   border: solid 2px #000;
 }
 html::-webkit-scrollbar-button:single-button {
-  display: block;
   width: 20px;
   height: 20px;
+  display: block;
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: center;
@@ -64,8 +66,8 @@ html::-webkit-scrollbar-button:single-button:vertical:increment {
 
 header {
   width: 100%;
-  height: 90vh;
-  padding: 2em 10em;
+  padding: 4em 10em;
+  padding-bottom: 15em;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -93,32 +95,33 @@ img {
 }
 
 .sticky-note {
-  position: relative;
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 450px;
   padding: 40px;
+  flex: none;
+  position: relative;
   background-color: var(--yellow);
   border: var(--border);
   clip-path: polygon(0% 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, 0% 100%);
 }
 .sticky-note::before {
   content: "";
+  width: 40px;
+  height: 40px;
   position: absolute;
   top: -2.5px;
   right: -2.5px;
-  width: 40px;
-  height: 40px;
   background-color: var(--yellow);
   border: var(--border);
   clip-path: polygon(0% 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, 0% 100%);
 }
 .sticky-note::after {
   content: "";
+  width: 70px;
+  height: 5px;
   position: absolute;
   right: -14px;
   top: 19px;
-  width: 70px;
-  height: 5px;
   transform: rotate(45deg);
   background-color: #000;
 }
@@ -139,48 +142,132 @@ img {
   font-size: 30px;
 }
 .sticky-note .text .content p {
+  height: 35px;
+  padding-bottom: -10px;
+  display: flex;
+  align-items: flex-end;
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
-  height: 35px;
-  display: flex;
-  box-sizing: border-box;
-  padding-bottom: -10px;
-  align-items: flex-end;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3em 18em;
+  position: relative;
+  padding: 3em 9vw;
+  padding-top: 5em;
+}
+@media (max-width: 1000px) {
+  .header-content {
+    flex-direction: column;
+    gap: 2em;
+  }
+}
+@media (max-width: 1700px) {
+  .header-content {
+    padding: 3em 8vw;
+    padding-top: 5em;
+  }
+  .header-content .sticky-note {
+    width: 400px;
+    height: 400px;
+  }
+  .header-content .me-image {
+    zoom: 0.85;
+  }
+}
+@media (max-width: 1450px) {
+  .header-content {
+    padding: 3em 3vw;
+    padding-top: 5em;
+  }
+  .header-content .me-image {
+    zoom: 0.8;
+  }
+}
+@media (max-width: 1250px) {
+  .header-content {
+    padding: 3em 0vw;
+    padding-top: 5em;
+  }
+  .header-content .sticky-note {
+    zoom: 0.9;
+  }
+  .header-content .me-image {
+    zoom: 0.75;
+  }
+}
+.header-content .birds {
+  position: absolute;
+}
+.header-content .birds:nth-child(1) {
+  left: -100px;
+  bottom: -120px;
+}
+.header-content .birds:nth-child(2) {
+  right: -100px;
+  top: 40px;
 }
 .header-content .me-image {
   position: relative;
 }
 .header-content .me-image .me-cloud {
-  width: 250px;
   position: absolute;
 }
 .header-content .me-image .me-cloud:nth-child(2) {
-  left: -51px;
-  bottom: -50px;
+  left: -130px;
+  bottom: -30px;
+  transform: scaleX(-1);
 }
 .header-content .me-image .me-cloud:nth-child(3) {
-  right: -51px;
-  bottom: -50px;
+  right: -100px;
+  bottom: -40px;
+  z-index: 1;
 }
-
+.header-content .me-image .me-cloud:nth-child(4) {
+  right: 110px;
+  bottom: -55px;
+}
 .clouds {
   width: 100%;
-  height: 400px;
+  height: 300px;
   position: absolute;
   left: 0;
-  bottom: -70px;
-  overflow: hidden;
+  bottom: -100px;
+  overflow-x: hidden;
   pointer-events: none;
 }
 .clouds .cloud {
   position: absolute;
   left: 100%;
   bottom: 100px;
+}
+@media (max-width: 1000px) {
+  .clouds {
+    bottom: -175px;
+  }
+}
+
+.hills {
+  --h: clamp(100px, 2vw, 5vw);
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+.hills .img {
+  width: 100%;
+  height: var(--h);
+  position: absolute;
+  top: calc(var(--h) * -0.89);
+  background-image: url("../assets/images/hills.png");
+  background-size: auto var(--h);
+  background-repeat: repeat-x;
+  image-rendering: pixelated;
+}
+.hills .content {
+  width: 100%;
+  height: 100px;
+  background-color: var(--green);
+  border-bottom: var(--border);
 }/*# sourceMappingURL=style.css.map */
