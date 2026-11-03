@@ -1,4 +1,4 @@
-export default function Sprite({ src, pixelSize, className = '' }) {
+export default function Sprite({ src, pixelSize = 1, className = '' }) {
   const fit = (img) => {
     if (img && img.complete) {
       img.style.setProperty('--w', img.naturalWidth);

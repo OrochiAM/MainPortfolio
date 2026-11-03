@@ -1,10 +1,12 @@
+/* GLOBAL */
+
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 :root {
   --blue: #2e9ded;
   --yellow: #ffe96e;
   --green: #99e550;
-  --border: solid 5px #000;
+  --border-width: 4px;
   --pixel: 9px;
   --h: 100px;
 }
@@ -25,6 +27,34 @@ body {
   background-image:
     linear-gradient(to top, #00000011 1px, transparent 1px),
     linear-gradient(to right, #00000011 1px, transparent 1px);
+
+  cursor: url('../assets/images/cursors/cursor.png'), auto;
+}
+
+/* SELECTION AND CURSORS */
+
+button,
+a {
+  cursor: url('../assets/images/cursors/pointer.png'), auto;
+}
+
+h1::selection,
+h2::selection,
+p::selection,
+a::selection {
+  background-color: var(--green);
+  color: #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  cursor: url('../assets/images/cursors/textcursor.png'), text;
+  font-weight: normal;
 }
 
 img {
@@ -81,6 +111,8 @@ html {
   }
 }
 
+/* HEADER */
+
 header {
   width: 100%;
   min-height: 99.1vh;
@@ -123,11 +155,23 @@ header {
       }
     }
   }
+
+  @media (max-width: 1000px) {
+    padding-bottom: 20em;
+
+    .header-top {
+      nav {
+        display: none;
+      }
+    }
+  }
 }
 
 img {
   image-rendering: pixelated;
 }
+
+/* STICKY NOTE */
 
 .sticky-note {
   width: 450px;
@@ -138,7 +182,7 @@ img {
   position: relative;
 
   background-color: var(--yellow);
-  border: var(--border);
+  border: solid var(--border-width) #000;
 
   clip-path: polygon(
     0% 0%,
@@ -151,20 +195,20 @@ img {
   &::before {
     content: '';
 
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 
     position: absolute;
-    top: -2.5px;
-    right: -2.5px;
+    top: -7px;
+    right: -7px;
 
     background-color: var(--yellow);
-    border: var(--border);
+    border: solid var(--border-width) #000;
 
     clip-path: polygon(
       0% 0%,
-      calc(100% - 50px) 0%,
-      100% 50px,
+      calc(100% - 60px) 0%,
+      100% 60px,
       100% 100%,
       0% 100%
     );
@@ -173,10 +217,10 @@ img {
   &::after {
     content: '';
     width: 70px;
-    height: 5px;
+    height: 4px;
 
     position: absolute;
-    right: -14px;
+    right: -12px;
     top: 19px;
 
     transform: rotate(45deg);
@@ -198,6 +242,7 @@ img {
 
     .content {
       height: 80%;
+
       background-size: 35px 35px;
       background-image: linear-gradient(to top, #000 2px, transparent 2px);
 
@@ -223,6 +268,7 @@ img {
   align-items: center;
 
   position: relative;
+  z-index: 1;
 
   padding: 3em 9vw;
   padding-top: 3em;
@@ -311,6 +357,8 @@ img {
   }
 }
 
+/* CLOUDS */
+
 .clouds {
   width: 100%;
   height: 300px;
@@ -352,6 +400,125 @@ img {
     height: 100px;
 
     background-color: var(--green);
-    border-bottom: var(--border);
+    border-bottom: solid var(--border-width) #000;
+  }
+}
+
+/* ABOUT ME */
+
+.about-me-section {
+  margin: 2em;
+  padding: 3em 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .folder-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: red;
+
+    .text {
+      font-size: 30px;
+    }
+  }
+
+  .folder {
+    width: 80vw;
+    margin: 3em 0;
+
+    border: solid var(--border-width) #000;
+  }
+}
+
+/* ID */
+
+.id {
+  max-width: 500px;
+
+  border: solid var(--border-width) #000;
+  border-radius: 10px;
+
+  > .title {
+    padding: 1em;
+
+    font-size: 20px;
+
+    background-color: #000;
+    color: #fff;
+  }
+
+  .content {
+    padding: 2em 1em;
+
+    display: flex;
+    justify-content: space-around;
+
+    border-radius: 0 0 10px 10px;
+    background-color: #fff;
+
+    .img {
+      width: 130px;
+      height: 170px;
+
+      border: solid calc(var(--border-width) * 0.75);
+
+      background-color: #eee;
+      background-image: url('../assets/images/ja.png');
+      background-size: cover;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      font-size: 32px;
+
+      [class$='-section'] {
+        display: flex;
+        gap: 1em;
+      }
+
+      .title {
+        font-size: 23px;
+      }
+    }
+  }
+}
+
+/* FILE WINDOW */
+
+.file {
+  background-color: #eee;
+  border: solid var(--border-width);
+
+  .header {
+    padding: 0.7em 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #000;
+    color: #fff;
+
+    font-size: 20px;
+
+    button {
+      padding: 0.5em;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: red;
+      border: solid var(--border-width) #fff;
+    }
+  }
+
+  main {
+    padding: 2em;
   }
 }

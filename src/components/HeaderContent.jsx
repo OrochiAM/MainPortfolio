@@ -26,7 +26,6 @@ export default function HeaderContent() {
         <Sprite src={BigCloud} className="me-cloud" pixelSize={9} />
         <Sprite src={BigCloud} className="me-cloud" pixelSize={9} />
         <Sprite src={MediumCloud} className="me-cloud" pixelSize={9} />
-        <Sprite src={MediumCloud} className="me-cloud" pixelSize={9} />
       </div>
     </main>
   );
