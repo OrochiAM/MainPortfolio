@@ -6,13 +6,14 @@
   --green: #99e550;
   --border: solid 5px #000;
   --pixel: 9px;
+  --h: 100px;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: solid 2px #ff000055;
+  //outline: solid 2px #ff000055;
 }
 
 body {
@@ -28,6 +29,11 @@ body {
 
 img {
   user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 .sprite {
@@ -77,8 +83,8 @@ html {
 
 header {
   width: 100%;
-  padding: 4em 10em;
-  padding-bottom: 15em;
+  min-height: 99.1vh;
+  padding: 1.5em 10em;
 
   position: relative;
 
@@ -102,8 +108,19 @@ header {
 
     ul {
       display: flex;
-      gap: 1em;
+      gap: 1.5em;
       list-style: none;
+
+      li {
+        position: relative;
+      }
+
+      li:hover::before {
+        content: '>>';
+
+        position: absolute;
+        left: -25px;
+      }
     }
   }
 }
@@ -208,7 +225,7 @@ img {
   position: relative;
 
   padding: 3em 9vw;
-  padding-top: 5em;
+  padding-top: 3em;
 
   @media (max-width: 1000px) {
     flex-direction: column;
@@ -300,7 +317,7 @@ img {
 
   position: absolute;
   left: 0;
-  bottom: -100px;
+  bottom: -1vh;
   overflow-x: hidden;
   pointer-events: none;
 
@@ -309,15 +326,9 @@ img {
     left: 100%;
     bottom: 100px;
   }
-
-  @media (max-width: 1000px) {
-    bottom: -175px;
-  }
 }
 
 .hills {
-  --h: clamp(100px, 2vw, 5vw);
-
   width: 100%;
 
   position: relative;

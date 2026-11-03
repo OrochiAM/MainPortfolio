@@ -9,8 +9,8 @@ export default function Header() {
       <header>
         <HeaderTop />
         <HeaderContent />
+        <Clouds />
       </header>
-      <Clouds />
       <Hills />
     </>
   );

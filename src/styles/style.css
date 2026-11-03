@@ -5,13 +5,13 @@
   --green: #99e550;
   --border: solid 5px #000;
   --pixel: 9px;
+  --h: 100px;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: solid 2px rgba(255, 0, 0, 0.3333333333);
 }
 
 body {
@@ -25,6 +25,11 @@ img {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 .sprite {
@@ -66,8 +71,8 @@ html::-webkit-scrollbar-button:single-button:vertical:increment {
 
 header {
   width: 100%;
-  padding: 4em 10em;
-  padding-bottom: 15em;
+  min-height: 99.1vh;
+  padding: 1.5em 10em;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -86,8 +91,16 @@ header .header-top img {
 }
 header .header-top ul {
   display: flex;
-  gap: 1em;
+  gap: 1.5em;
   list-style: none;
+}
+header .header-top ul li {
+  position: relative;
+}
+header .header-top ul li:hover::before {
+  content: ">>";
+  position: absolute;
+  left: -25px;
 }
 
 img {
@@ -156,7 +169,7 @@ img {
   align-items: center;
   position: relative;
   padding: 3em 9vw;
-  padding-top: 5em;
+  padding-top: 3em;
 }
 @media (max-width: 1000px) {
   .header-content {
@@ -234,7 +247,7 @@ img {
   height: 300px;
   position: absolute;
   left: 0;
-  bottom: -100px;
+  bottom: -1vh;
   overflow-x: hidden;
   pointer-events: none;
 }
@@ -243,14 +256,8 @@ img {
   left: 100%;
   bottom: 100px;
 }
-@media (max-width: 1000px) {
-  .clouds {
-    bottom: -175px;
-  }
-}
 
 .hills {
-  --h: clamp(100px, 2vw, 5vw);
   width: 100%;
   position: relative;
   z-index: 0;

@@ -24,7 +24,7 @@ export default function Clouds() {
 
       clouds.forEach((cloud, i) => {
         const randomHeight = () =>
-          gsap.set(cloud, { bottom: getRandom(110, 170) });
+          gsap.set(cloud, { bottom: getRandom(120, 170) });
         randomHeight();
 
         gsap.to(cloud, {
