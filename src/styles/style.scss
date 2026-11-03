@@ -273,11 +273,6 @@ img {
   padding: 3em 9vw;
   padding-top: 3em;
 
-  @media (max-width: 1000px) {
-    flex-direction: column;
-    gap: 2em;
-  }
-
   @media (max-width: 1700px) {
     padding: 3em 8vw;
     padding-top: 5em;
@@ -311,6 +306,15 @@ img {
 
     .me-image {
       zoom: 0.75;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    gap: 2em;
+
+    .me-image {
+      zoom: 0.6;
     }
   }
 
@@ -418,8 +422,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: red;
-
+    gap: 0.5em;
     .text {
       font-size: 30px;
     }
