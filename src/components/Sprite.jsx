@@ -1,10 +1,11 @@
-export default function Sprite({ src, pixelSize = 1, className = '' }) {
+export default function Sprite({ src, pixelSize, className = '' }) {
   const fit = (img) => {
-    if (img && img.complete) {
-      img.style.setProperty('--w', img.naturalWidth);
+    if (!img || !img.complete) return;
 
-      if (pixelSize) img.style.setProperty('--pixel', `${pixelSize}px`);
-    }
+    img.style.setProperty('--w', img.naturalWidth);
+
+    if (pixelSize) img.style.setProperty('--pixel', `${pixelSize}px`);
+    else img.style.removeProperty('--pixel'); // let the CSS decide
   };
 
   return (

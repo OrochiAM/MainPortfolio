@@ -9,6 +9,7 @@
   --border-width: 4px;
   --pixel: 9px;
   --h: 100px;
+  --cloud-px: 10px;
 }
 
 * {
@@ -117,7 +118,7 @@ header {
   width: 100%;
   min-height: 99.1vh;
   padding: 1.5em 10em;
-  padding-bottom: 15em;
+  padding-bottom: 1em;
   position: relative;
 
   display: flex;
@@ -265,6 +266,10 @@ img {
 }
 
 .header-content {
+  --by-width: tan(atan2(100vw, 1400px));
+  --by-height: tan(atan2(100vh, 850px));
+  --z: clamp(0.6, min(var(--by-width), var(--by-height)), 1);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -273,13 +278,20 @@ img {
   position: relative;
   z-index: 1;
 
-  padding: 5em clamp(0px, calc((100vw - 1250px) * 0.3), 15em) 3em;
+  align-self: center;
+  width: calc(100% * var(--z));
 
+  padding: calc(2em * var(--z))
+    calc(clamp(0px, calc((100vw - 1250px) * 0.3), 15em) * var(--z))
+    calc(3em * var(--z));
+
+  .sticky-note,
   .me-image {
-    zoom: clamp(0.1, tan(atan2(100vw, 1400px)), 1);
+    zoom: var(--z);
   }
 
   @media (max-width: 1100px) {
+    --z: 1;
     flex-direction: column;
     gap: 2em;
 
@@ -309,6 +321,7 @@ img {
 
   .birds {
     position: absolute;
+    width: 12vw;
   }
 
   .birds:nth-child(1) {
@@ -317,8 +330,8 @@ img {
   }
 
   .birds:nth-child(2) {
-    left: -20px;
-    bottom: -80px;
+    left: -100px;
+    bottom: 0px;
 
     z-index: 0;
   }
@@ -328,16 +341,18 @@ img {
 
 .clouds {
   width: 100%;
-  height: 300px;
+  height: 40vh;
 
   position: absolute;
   left: 0;
-  z-index: 1;
-  bottom: -1vh;
-  overflow-x: hidden;
+  z-index: 0;
+  bottom: -5vh;
+  overflow-x: clip;
   pointer-events: none;
 
   .cloud {
+    --pixel: var(--cloud-px);
+
     position: absolute;
     left: 100%;
     bottom: 100px;
@@ -369,6 +384,27 @@ img {
 
     background-color: var(--green);
     border-bottom: solid var(--border-width) #000;
+  }
+}
+
+@media (max-height: 860px) {
+  :root {
+    --h: 80px;
+    --cloud-px: 5px;
+  }
+}
+
+@media (max-height: 720px) {
+  :root {
+    --h: 60px;
+    --cloud-px: 4px;
+  }
+}
+
+@media (max-height: 600px) {
+  :root {
+    --h: 40px;
+    --cloud-px: 3px;
   }
 }
 

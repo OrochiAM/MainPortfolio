@@ -19,7 +19,7 @@ export default function Clouds() {
     () => {
       const clouds = gsap.utils.toArray('.cloud');
       const vw = window.innerWidth;
-      const duration = 25;
+      const duration = 30;
       const gap = duration / clouds.length;
 
       clouds.forEach((cloud, i) => {
@@ -51,16 +51,14 @@ export default function Clouds() {
     { scope: root },
   );
 
-  let ps = 6;
-
   return (
     <div className="clouds" ref={root}>
-      <Sprite src={BigCloud} className="cloud" pixelSize={ps} />
-      <Sprite src={MediumCloud} className="cloud" pixelSize={ps} />
-      <Sprite src={SmallCloud} className="cloud" pixelSize={ps} />
-      <Sprite src={BigCloud} className="cloud" pixelSize={ps} />
-      <Sprite src={MediumCloud} className="cloud" pixelSize={ps} />
-      <Sprite src={SmallCloud} className="cloud" pixelSize={ps} />
+      <Sprite src={BigCloud} className="cloud" />
+      <Sprite src={MediumCloud} className="cloud" />
+      <Sprite src={SmallCloud} className="cloud" />
+      <Sprite src={BigCloud} className="cloud" />
+      <Sprite src={MediumCloud} className="cloud" />
+      <Sprite src={SmallCloud} className="cloud" />
     </div>
   );
 }
