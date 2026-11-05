@@ -325,31 +325,67 @@ img {
   }
 }
 /* ABOUT ME */
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+.icon .text {
+  font-size: 30px;
+}
+
 .about-me-section {
+  position: relative;
   margin: 2em;
   padding: 3em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.about-me-section .folder-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5em;
-}
-.about-me-section .folder-icon .text {
-  font-size: 30px;
+.about-me-section .cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
 }
 .about-me-section .folder {
-  width: 80vw;
+  width: 70vw;
   margin: 3em 0;
   border: solid var(--border-width) #000;
+}
+.about-me-section .folder > main {
+  padding: 5em;
+  display: flex;
+  flex-direction: column;
+}
+.about-me-section .folder > main > div:nth-child(even) {
+  align-self: end;
+}
+.about-me-section .folder > main [class$=-container] {
+  position: relative;
+}
+.about-me-section .folder > main .icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  z-index: 2;
+}
+.about-me-section .folder > main .icon img {
+  width: 80px;
 }
 
 /* ID */
 .id {
   max-width: 500px;
+  width: 500px;
+  position: relative;
+  z-index: 1;
   border: solid var(--border-width) #000;
   border-radius: 10px;
 }
@@ -410,6 +446,63 @@ img {
   background-color: red;
   border: solid var(--border-width) #fff;
 }
-.file main {
+.file > main {
   padding: 2em;
+}
+
+.word-document {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+}
+.word-document main {
+  padding-top: 0.5em;
+}
+.word-document .buttons {
+  display: flex;
+  justify-content: start;
+  gap: 0.5em;
+}
+.word-document .buttons button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: solid calc(var(--border-width) * 0.8) #000;
+  font-size: 20px;
+}
+.word-document .buttons button.active {
+  background-color: #000;
+  color: #fff;
+}
+.word-document .buttons button:nth-child(1) {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+}
+.word-document .buttons button:nth-child(2) {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+}
+.word-document .buttons button:nth-child(3) {
+  color: red;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+}
+.word-document .text {
+  height: 300px;
+  margin-top: 0.25em;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: center;
+  text-align: justify;
+  border: solid calc(var(--border-width) * 0.8) #000;
+  background: linear-gradient(to bottom, transparent 2px, white 2px), linear-gradient(to right, transparent 2px, white 2px), rgba(0, 0, 0, 0.1529411765);
+  background-size: 25px 25px;
+  background-repeat: repeat;
+  line-height: 25px;
+  font-size: 25px;
 }/*# sourceMappingURL=style.css.map */
