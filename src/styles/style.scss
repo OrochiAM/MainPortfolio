@@ -450,6 +450,8 @@ img {
       flex-direction: column;
       gap: 3em;
 
+      gap: 2em;
+
       > div:nth-child(even) {
         align-self: end;
       }
