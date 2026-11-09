@@ -446,16 +446,35 @@ img {
 
     > main {
       padding: 5em;
-
       display: flex;
       flex-direction: column;
+      gap: 3em;
 
       > div:nth-child(even) {
         align-self: end;
       }
 
-      [class$='-container'] {
-        position: relative;
+      > [class$='-container'] {
+        display: grid;
+        place-items: center;
+        width: fit-content;
+        align-self: start;
+
+        &:nth-child(even) {
+          align-self: end;
+        }
+
+        > * {
+          grid-area: 1 / 1;
+        }
+
+        > .icon {
+          position: static;
+          z-index: 2;
+          img {
+            width: 80px;
+          }
+        }
       }
 
       .icon {
