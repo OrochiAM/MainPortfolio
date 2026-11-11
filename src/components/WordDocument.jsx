@@ -41,10 +41,15 @@ export default function WordDocument() {
 
       <div className="text">
         <p style={textStyle}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui
-          voluptatum voluptatem consectetur vel. Asperiores soluta cum omnis
-          esse beatae culpa amet. Eius non sequi libero aliquam tempore iste,
-          illum temporibus.
+          I'm a frontend developer by vocation and education, with a
+          long-standing passion for modern web technologies. I completed
+          secondary school in Information Technology at the First Technical
+          School in Kragujevac (2018-2022), and I'm now finishing my studies at
+          the Faculty of Technical Sciences in Čačak (2022-2026), where I'm
+          earning a degree as a Graduate Engineer of Information Technology. I'm
+          motivated, curious, and quick to learn and adapt, and I do my best
+          work as a team player, getting the strongest results through
+          collaboration with others.
         </p>
       </div>
     </File>
